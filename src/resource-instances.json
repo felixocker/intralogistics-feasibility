@@ -173,6 +173,14 @@
           "0",
           "600"
         ]
+      },
+      "fill_strawberry": {
+        "key": "process",
+        "parent": "filling",
+        "feat_strawberry_filling": {
+          "key": "feature",
+          "parent": "strawberry_topping"
+        }
       }
     },
     "pellet_dispenser_02": {
@@ -185,6 +193,14 @@
           "0",
           "700"
         ]
+      },
+      "fill_choc": {
+        "key": "process",
+        "parent": "filling",
+        "feat_choc_filling": {
+          "key": "feature",
+          "parent": "chocolate_topping"
+        }
       }
     },
     "fluid_dispenser_01": {
@@ -201,6 +217,10 @@
       "fill_fluid": {
         "key": "process",
         "parent": "filling",
+        "feat_yogurt_filling": {
+          "key": "feature",
+          "parent": "yogurt_filling"
+        },
         "input": {
           "key": "input",
           "parent": "material_object",
