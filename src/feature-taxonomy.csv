@@ -1,0 +1,5 @@
+feature,parent,comment
+glass,material_object,
+yogurt_filling,material_object,
+strawberry_topping,material_object,
+chocolate_topping,material_object,

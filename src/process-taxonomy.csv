@@ -1,0 +1,21 @@
+process,parent,comment
+adhering,assembly_process,
+placing,assembly_process,
+screwing,assembly_process,
+welding,assembly_process,
+comissioning,logistics_process,putting together objects
+handling,logistics_process,
+storing,logistics_process,
+transporting,logistics_process,change the coordinates of an object
+positioning,logistics_process,change the orientation of an object
+sorting,logistics_process,sort objects in a specific way
+controlling,logistics_process,ensure that coordinates of an object stay the same
+casting,manufacturing_process,
+cleaning,manufacturing_process,
+forging,manufacturing_process,
+milling,manufacturing_process,
+separating,manufacturing_process,
+stamping,manufacturing_process,
+surface_treatment,manufacturing_process,
+turning,manufacturing_process,
+filling,manufacturing_process,

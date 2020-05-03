@@ -1,0 +1,147 @@
+{
+    "specification": {
+        "my_yogurt": [
+            {
+                "bounding_box_size": {
+                    "bbs_my_yogurt": [
+                        {
+                            "length": {
+                                "my_length1": [
+                                    {
+                                        "value": "30"
+                                    },
+                                    {
+                                        "unit": "mm"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "length": {
+                                "my_length2": [
+                                    {
+                                        "value": "30"
+                                    },
+                                    {
+                                        "unit": "mm"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "length": {
+                                "my_length3": [
+                                    {
+                                        "value": "50"
+                                    },
+                                    {
+                                        "unit": "mm"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "specification": {
+                    "my_glass": [
+                        {
+                            "bounding_box_size": {
+                                "bbs_glass": [
+                                    {
+                                        "length": {
+                                            "di_length1": {
+                                                "value": "30"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "length": {
+                                            "di_length2": {
+                                                "value": "30"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "length": {
+                                            "di_length3": {
+                                                "value": "50"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "requires": []
+                        }
+                    ]
+                }
+            },
+            {
+                "specification": {
+                    "my_yogurt_filling": [
+                        {
+                            "volume": {
+                                "yogurt-volume": [
+                                    {
+                                        "value": "35"
+                                    },
+                                    {
+                                        "unit": "ccm"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "requires": ["my_glass"]
+                        }
+                    ]
+                }
+            },
+            {
+                "specification": {
+                    "my_strawberry_topping": [
+                        {
+                            "volume": {
+                                "strawberry_volume": [
+                                    {
+                                        "value": "6"
+                                    },
+                                    {
+                                        "unit": "ccm"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "requires": ["my_glass", "my_yogurt_filling"]
+                        }
+                    ]
+                }
+            },
+            {
+                "specification": {
+                    "my_chocolate_topping": [
+                        {
+                            "volume": {
+                                "chocolate_volume": [
+                                    {
+                                        "value": "1"
+                                    },
+                                    {
+                                        "unit": "ccm"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "requires": ["my_glass", "my_yogurt_filling", "my_strawberry_topping"]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
