@@ -8,11 +8,11 @@ from onto_gen_modules import get_csv_data, get_json_data, dynamically_create_cla
 
 IRI = "http://example.org/logistics-onto.owl"
 FILE = "logistics-onto.owl"
-CSV_PROCESS_TAXO = "process-taxonomy.csv"
-CSV_RESOURCE_TAXO = "resource-taxonomy.csv"
-CSV_FEATURE_TAXO = "feature-taxonomy.csv"
-JSON_RESOURCE_INSTANCES = "resource-instances.json"
-JSON_PRODUCT_SPEC = "product.json"
+CSV_PROCESS_TAXO = "../data/process-taxonomy.csv"
+CSV_RESOURCE_TAXO = "../data/resource-taxonomy.csv"
+CSV_FEATURE_TAXO = "../data/feature-taxonomy.csv"
+JSON_RESOURCE_INSTANCES = "../data/resource-instances.json"
+JSON_PRODUCT_SPEC = "../data/product.json"
 
 def build_tbox(iri, output):
     """build tbox and store into output"""
