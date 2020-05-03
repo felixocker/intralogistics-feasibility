@@ -1,0 +1,32 @@
+# query for identifying logstics resources and their sources and sinks
+SELECT DISTINCT ?sink ?source ?type ?area ?point ?x ?y ?radius ?r ?neighbor
+WHERE {
+    {
+        ?sink :can_transport_from ?area . 
+        ?area a ?type . 
+    } UNION {
+        ?source :can_transport_to ?area . 
+        ?area a ?type . 
+    }
+    ?type rdfs:subClassOf* :spatial_region . 
+    {
+        ?area :specified_by ?point . 
+        ?point a :point . 
+        ?point :cartesian_coord_x ?x . 
+        ?point :cartesian_coord_y ?y . 
+        OPTIONAL {
+            ?point :geometrically_neighbors ?neighbor . 
+            ?neighbor a :point . 
+        }
+    } UNION {
+        ?area a :circle . 
+        ?area :specified_by ?radius . 
+        ?radius a :radius . 
+        ?radius :has_value ?r . 
+    } UNION {
+        ?area a :point . 
+        ?area :cartesian_coord_x ?x . 
+        ?area :cartesian_coord_y ?y . 
+    }
+}
+ORDER BY ?sink ?source

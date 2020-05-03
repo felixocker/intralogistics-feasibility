@@ -1,0 +1,64 @@
+# query for identifying logstics resources and their sources and sinks
+# PREFIX : <http://example.org/logistics-onto.owl#>
+SELECT DISTINCT ?res1 ?res2
+WHERE {
+    {
+        # ?res1 is a transport resource, ?res2 is not
+        ?res1 :connected_to ?res2 ;
+            :can_transport_to ?area_res2 . 
+        FILTER NOT EXISTS {
+            ?res2 :can_transport_to ?area_res2 . 
+        }
+        :my_yogurt :has_quality ?spec_quality . 
+        ?spec_quality a ?quality . ?quality rdfs:subClassOf :quality . 
+        ?res1 :can_execute/:process_input/:has_quality ?res_quality . 
+        ?res_quality a ?quality . 
+        FILTER NOT EXISTS {
+            # ?res1 qualities must subsume all ?spec qualities
+            ?res_quality :has_quality*/:has_max_value ?max_value . 
+            ?spec_quality :has_quality*/:has_value ?value . 
+            FILTER ( ?value > ?max_value )
+        }
+    } UNION {
+        # ?res2 is a transport resource, ?res1 is not
+        ?res1 :connected_to ?res2 . 
+        ?res2 :can_transport_from ?area_res2 . 
+        FILTER NOT EXISTS {
+            ?res1 :can_transport_to ?area_res1 . 
+        }
+        :my_yogurt :has_quality ?spec_quality . 
+        ?spec_quality a ?quality . ?quality rdfs:subClassOf :quality . 
+        ?res2 :can_execute/:process_input/:has_quality ?res_quality . 
+        ?res_quality a ?quality . 
+        FILTER NOT EXISTS {
+            # ?res1 qualities must subsume all ?spec qualities
+            ?res_quality :has_quality*/:has_max_value ?max_value . 
+            ?spec_quality :has_quality*/:has_value ?value . 
+            FILTER ( ?value > ?max_value )
+        }
+    } UNION {
+        # both ?res1 and ?res2 are a transport resources
+        ?res1 :connected_to ?res2 . 
+        ?res1 :can_transport_to ?area_res1 . 
+        ?res2 :can_transport_from ?area_res2 . 
+        :my_yogurt :has_quality ?spec_quality . 
+        ?spec_quality a ?quality . ?quality rdfs:subClassOf :quality . 
+        ?res1 :can_execute/:process_input/:has_quality ?res2_quality . 
+        ?res1_quality a ?quality . 
+        ?res2 :can_execute/:process_input/:has_quality ?res2_quality . 
+        ?res2_quality a ?quality . 
+        FILTER NOT EXISTS {
+            # ?res1 qualities must subsume all ?spec qualities
+            ?res1_quality :has_quality*/:has_max_value ?max_value . 
+            ?spec_quality :has_quality*/:has_value ?value . 
+            FILTER ( ?value > ?max_value )
+        }
+        FILTER NOT EXISTS {
+            # ?res1 qualities must subsume all ?spec qualities
+            ?res2_quality :has_quality*/:has_max_value ?max_value . 
+            ?spec_quality :has_quality*/:has_value ?value . 
+            FILTER ( ?value > ?max_value )
+        }
+    }
+}
+ORDER BY ?res1 ?res2
