@@ -273,7 +273,6 @@ def main():
     dynamically_create_classes(IRI, FILE, get_csv_data(CSV_FEATURE_TAXO))
     create_spec_from_json(IRI, FILE, get_json_data(JSON_PRODUCT_SPEC))
     create_resource_description_from_json(IRI, FILE, get_json_data(JSON_RESOURCE_INSTANCES))
-#    json_resources_to_list(get_json_data(JSON_RESOURCE_INSTANCES))
 
 if __name__ == "__main__":
     main()

@@ -98,7 +98,6 @@ def create_spec_from_json(iri, output, input_data):
     """create instance for product specification from list"""
     triple_list = []
     json_spec_to_list(input_data, triple_list)
-#    [print(i) for i in triple_list]
     onto = get_ontology(iri).load()
     # must create all instances first
     for i in triple_list:
