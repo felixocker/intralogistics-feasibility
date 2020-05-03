@@ -1,0 +1,10 @@
+# folders
+.venv
+.vscode
+src/__pycache__/
+
+# filetypes
+*.owl
+
+# individual files
+src/resource-instances-for-gen.txt
