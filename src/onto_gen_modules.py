@@ -115,6 +115,8 @@ def create_spec_from_json(iri, output, input_data):
             onto[i[0]].has_unit = onto[i[2]]
         if i[1] == "requires":
             onto[i[0]].requires.append(onto[i[2]])
+        if i[1] == "feature-type":
+            onto[i[0]].is_a.append(onto[i[2]])
     onto.save(file=output)
 
 def json_resources_to_list(onto, dic):
@@ -196,11 +198,12 @@ def json_resources_to_list(onto, dic):
                         onto[i].has_quality.append(onto[name])
                         json_resources_to_list(onto, {name: dic[i][v]})
         if dic[i]["key"] == "process":
-            # only has nested processes, qualities, inputs, and outputs
+            # only has nested processes, qualities, inputs, outputs, and features
             keywords = {"process": "has_part",
                         "quality": "has_quality",
                         "input": "process_input",
-                        "output": "process_output"}
+                        "output": "process_output",
+                        "feature": "can_realize"}
             for k in dic[i]:
                 if isinstance(dic[i][k], dict):
                     if dic[i][k]["key"] in keywords.keys():
