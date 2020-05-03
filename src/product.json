@@ -75,6 +75,9 @@
                         },
                         {
                             "requires": []
+                        },
+                        {
+                            "feature-type": ["glass"]
                         }
                     ]
                 }
@@ -96,6 +99,9 @@
                         },
                         {
                             "requires": ["my_glass"]
+                        },
+                        {
+                            "feature-type": ["yogurt_filling"]
                         }
                     ]
                 }
@@ -117,6 +123,9 @@
                         },
                         {
                             "requires": ["my_glass", "my_yogurt_filling"]
+                        },
+                        {
+                            "feature-type": ["strawberry_topping"]
                         }
                     ]
                 }
@@ -138,6 +147,9 @@
                         },
                         {
                             "requires": ["my_glass", "my_yogurt_filling", "my_strawberry_topping"]
+                        },
+                        {
+                            "feature-type": ["chocolate_topping"]
                         }
                     ]
                 }
