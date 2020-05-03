@@ -145,7 +145,7 @@ def build_tbox(iri, output):
                         subsequent process execution"]
             domain = [material_object]
             range = [material_object]
-        class specifically_connected_to(connected_to):
+        class specifically_connected_to(connected_to, TransitiveProperty):
             comment = ["relation for feasibility checks specifically for one spec"]
             domain = [material_object]
             range = [material_object]
