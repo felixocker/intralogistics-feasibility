@@ -1,0 +1,6 @@
+# query to identify infeasible features
+# PREFIX : <http://example.org/logistics-onto.owl#>
+SELECT DISTINCT ?fs1 ?fs2
+WHERE {
+    {
+        

@@ -1,0 +1,7 @@
+ :has_part ?fs1 . 
+        ?fs1 a ?f1 . ?f1 rdfs:subClassOf* :material_object . 
+        FILTER NOT EXISTS {
+            ?r1 :can_execute/:can_realize/a ?f1 . 
+        }
+    }
+}

@@ -1,0 +1,11 @@
+ :has_part ?fs1, ?fs2 . 
+        ?fs2 :requires ?fs1 . 
+        ?fs1 a ?f1 . ?f1 rdfs:subClassOf* owl:Thing . 
+        ?fs2 a ?f2 . ?f2 rdfs:subClassOf* owl:Thing . 
+        ?r1 :can_execute/:can_realize ?fr1 . ?fr1 a ?f1 . 
+        ?r2 :can_execute/:can_realize ?fr2 . ?fr2 a ?f2 . 
+        FILTER NOT EXISTS {
+            ?r1 :specifically_connected_to+ ?r2 . 
+        }
+    } UNION {
+        
