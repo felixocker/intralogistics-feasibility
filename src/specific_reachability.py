@@ -12,6 +12,23 @@ IRI = "http://example.org/logistics-onto.owl"
 PREFIXES = "../queries/prefixes.sparql"
 QUERY = "../queries/find_viable_transport_resources.sparql"
 QUERY_FEATS = "../queries/feature_feasibility.sparql"
+QUERY_FEATS_1 = "../queries/feature_feasibility_pt1.sparql"
+QUERY_FEATS_2 = "../queries/feature_feasibility_pt2.sparql"
+QUERY_FEATS_3 = "../queries/feature_feasibility_pt3.sparql"
+
+def run_complex_query(ontofile, part1, part2, part3, spec):
+    """create query for feasibility check of a spec"""
+    myfile = open(PREFIXES, "r")
+    query = myfile.read()
+    myfile.close()
+    for part in [part1, part2, part3]:
+        myfile = open(part, "r")
+        query += myfile.read()
+        myfile.close()
+        if not part == part3:
+            query += spec
+    print(query)
+    return xq.executequery(ontofile, query)
 
 def run_query(ontofile, query_body):
     """build query and run on ontofile"""
@@ -41,4 +58,4 @@ def specific_feedback(infeasible_features):
 
 if __name__ == "__main__":
     insert_relations(run_query(ONTOFILE, QUERY))
-    specific_feedback(run_query(ONTOFILE, QUERY_FEATS))
+    specific_feedback(run_complex_query(ONTOFILE, QUERY_FEATS_1, QUERY_FEATS_2, QUERY_FEATS_3, ":my_yogurt"))
