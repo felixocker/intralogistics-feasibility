@@ -1,0 +1,8 @@
+# query for identifying top-level specs
+SELECT DISTINCT ?spec
+WHERE {
+    ?spec a :specification . 
+    FILTER NOT EXISTS {
+        ?other :has_part ?spec . 
+    }
+}

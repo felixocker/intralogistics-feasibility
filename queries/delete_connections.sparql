@@ -1,0 +1,4 @@
+# query to delete inserted specifically_connected_to relations
+# PREFIX : <http://example.org/logistics-onto.owl#>
+DELETE { ?s :specifically_connected_to ?o . }
+WHERE { ?s :specifically_connected_to ?o . }
