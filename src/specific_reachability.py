@@ -73,11 +73,14 @@ def insert_relations(specific_relations):
 
 def specific_feedback(infeasible_features):
     """return feedback which features cannot be realized"""
-    for i in infeasible_features:
-        if not i[1]:
-            print(i[0], " - infeasible - no available resource can realize this feature")
-        else:
-            print(i[0], " - infeasible - no transport connection to resource that can realize ", i[1])
+    if not infeasible_features:
+        print("no infeasible features")
+    else:
+        for i in infeasible_features:
+            if not i[1]:
+                print(i[0], " - infeasible - no available resource can realize this feature")
+            else:
+                print(i[0], " - infeasible - no transport connection to resource that can realize ", i[1])
 
 if __name__ == "__main__":
     for spec in get_spec_instances(ONTOFILE):

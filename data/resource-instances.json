@@ -4,27 +4,94 @@
     "parent": "human",
     "sink_01": {
       "key": "sink",
-      "parent": "circle",
+      "parent": "polygon",
       "value": [
-        ["0", "0"],
-        "600"
-      ]
-    },
-    "sink_02": {
-      "key": "sink",
-      "parent": "circle",
-      "value": [
-        ["200", "200"],
-        "600"
+        ["50", "50"],
+        ["150", "350"],
+        ["400", "350"],
+        ["400", "50"]
       ]
     },
     "source": {
       "key": "source",
       "parent": "polygon",
       "value": [
-        ["0", "0"],
-        ["0", "600"],
-        ["300", "300"]
+        ["50", "50"],
+        ["150", "350"],
+        ["400", "350"],
+        ["400", "50"]
+      ]
+    },
+    "transport": {
+      "key": "process",
+      "parent": "transporting",
+      "input": {
+        "key": "input",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        },
+        "bounding_box": {
+          "key": "quality",
+          "parent": "bounding_box_size",
+          "length_1": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_2": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_3": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          }
+        }
+      },
+      "output": {
+        "key": "output",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        }
+      },
+      "speed": {
+        "key": "quality",
+        "parent": "speed",
+        "max-value": ".5",
+        "unit": "m_p_s"
+      }
+    }
+  },
+  "robot_01": {
+    "key": "resource",
+    "parent": "stationary_robot",
+    "sink_01": {
+      "key": "sink",
+      "parent": "circle",
+      "value": [
+        ["550", "650"],
+        "200"
+      ]
+    },
+    "source": {
+      "key": "source",
+      "parent": "circle",
+      "value": [
+        ["550", "650"],
+        "200"
       ]
     },
     "transport": {
@@ -87,24 +154,468 @@
       "key": "location",
       "parent": "line",
       "value": [
-        ["100", "200"],
-        ["600", "200"]
+        ["100", "1000"],
+        ["450", "1000"]
       ]
     },
     "sink": {
       "key": "sink",
       "parent": "line",
       "value": [
-        ["100", "200"],
-        ["600", "200"]
+        ["100", "1000"],
+        ["450", "1000"]
       ]
     },
     "source": {
       "key": "source",
       "parent": "line",
       "value": [
-        ["100", "200"],
-        ["600", "200"]
+        ["100", "1000"],
+        ["450", "1000"]
+      ]
+    },
+    "transport": {
+      "key": "process",
+      "parent": "transporting",
+      "input": {
+        "key": "input",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        },
+        "bounding_box": {
+          "key": "quality",
+          "parent": "bounding_box_size",
+          "length_1": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_2": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_3": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          }
+        }
+      },
+      "output": {
+        "key": "output",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        }
+      }
+    }
+  },
+  "conveyor_02": {
+    "key": "resource",
+    "parent": "belt_conveyor",
+    "location": {
+      "key": "location",
+      "parent": "line",
+      "value": [
+        ["100", "650"],
+        ["100", "1000"]
+      ]
+    },
+    "sink": {
+      "key": "sink",
+      "parent": "line",
+      "value": [
+        ["100", "650"],
+        ["100", "1000"]
+      ]
+    },
+    "source": {
+      "key": "source",
+      "parent": "line",
+      "value": [
+        ["100", "650"],
+        ["100", "1000"]
+      ]
+    },
+    "transport": {
+      "key": "process",
+      "parent": "transporting",
+      "input": {
+        "key": "input",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        },
+        "bounding_box": {
+          "key": "quality",
+          "parent": "bounding_box_size",
+          "length_1": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_2": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_3": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          }
+        }
+      },
+      "output": {
+        "key": "output",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        }
+      }
+    }
+  },
+  "conveyor_03": {
+    "key": "resource",
+    "parent": "belt_conveyor",
+    "location": {
+      "key": "location",
+      "parent": "line",
+      "value": [
+        ["450", "650"],
+        ["450", "1000"]
+      ]
+    },
+    "sink": {
+      "key": "sink",
+      "parent": "line",
+      "value": [
+        ["450", "650"],
+        ["450", "1000"]
+      ]
+    },
+    "source": {
+      "key": "source",
+      "parent": "line",
+      "value": [
+        ["450", "650"],
+        ["450", "1000"]
+      ]
+    },
+    "transport": {
+      "key": "process",
+      "parent": "transporting",
+      "input": {
+        "key": "input",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        },
+        "bounding_box": {
+          "key": "quality",
+          "parent": "bounding_box_size",
+          "length_1": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_2": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_3": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          }
+        }
+      },
+      "output": {
+        "key": "output",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        }
+      }
+    }
+  },
+  "conveyor_04": {
+    "key": "resource",
+    "parent": "belt_conveyor",
+    "location": {
+      "key": "location",
+      "parent": "line",
+      "value": [
+        ["100", "650"],
+        ["450", "650"]
+      ]
+    },
+    "sink": {
+      "key": "sink",
+      "parent": "line",
+      "value": [
+        ["100", "650"],
+        ["450", "650"]
+      ]
+    },
+    "source": {
+      "key": "source",
+      "parent": "line",
+      "value": [
+        ["100", "650"],
+        ["450", "650"]
+      ]
+    },
+    "transport": {
+      "key": "process",
+      "parent": "transporting",
+      "input": {
+        "key": "input",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        },
+        "bounding_box": {
+          "key": "quality",
+          "parent": "bounding_box_size",
+          "length_1": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_2": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_3": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          }
+        }
+      },
+      "output": {
+        "key": "output",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        }
+      }
+    }
+  },
+  "conveyor_05": {
+    "key": "resource",
+    "parent": "belt_conveyor",
+    "location": {
+      "key": "location",
+      "parent": "line",
+      "value": [
+        ["100", "300"],
+        ["100", "650"]
+      ]
+    },
+    "sink": {
+      "key": "sink",
+      "parent": "line",
+      "value": [
+        ["100", "300"],
+        ["100", "650"]
+      ]
+    },
+    "source": {
+      "key": "source",
+      "parent": "line",
+      "value": [
+        ["100", "300"],
+        ["100", "650"]
+      ]
+    },
+    "transport": {
+      "key": "process",
+      "parent": "transporting",
+      "input": {
+        "key": "input",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        },
+        "bounding_box": {
+          "key": "quality",
+          "parent": "bounding_box_size",
+          "length_1": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_2": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_3": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          }
+        }
+      },
+      "output": {
+        "key": "output",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        }
+      }
+    }
+  },
+  "conveyor_06": {
+    "key": "resource",
+    "parent": "belt_conveyor",
+    "location": {
+      "key": "location",
+      "parent": "line",
+      "value": [
+        ["450", "300"],
+        ["450", "650"]
+      ]
+    },
+    "sink": {
+      "key": "sink",
+      "parent": "line",
+      "value": [
+        ["450", "300"],
+        ["450", "650"]
+      ]
+    },
+    "source": {
+      "key": "source",
+      "parent": "line",
+      "value": [
+        ["450", "300"],
+        ["450", "650"]
+      ]
+    },
+    "transport": {
+      "key": "process",
+      "parent": "transporting",
+      "input": {
+        "key": "input",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        },
+        "bounding_box": {
+          "key": "quality",
+          "parent": "bounding_box_size",
+          "length_1": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_2": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          },
+          "length_3": {
+            "key": "quality",
+            "parent": "length",
+            "max-value": "200",
+            "unit": "mm"
+          }
+        }
+      },
+      "output": {
+        "key": "output",
+        "parent": "material_object",
+        "mass": {
+          "key": "quality",
+          "parent": "mass",
+          "max-value": "15",
+          "unit": "kg"
+        }
+      }
+    }
+  },
+  "conveyor_07": {
+    "key": "resource",
+    "parent": "belt_conveyor",
+    "location": {
+      "key": "location",
+      "parent": "line",
+      "value": [
+        ["100", "300"],
+        ["450", "300"]
+      ]
+    },
+    "sink": {
+      "key": "sink",
+      "parent": "line",
+      "value": [
+        ["100", "300"],
+        ["450", "300"]
+      ]
+    },
+    "source": {
+      "key": "source",
+      "parent": "line",
+      "value": [
+        ["100", "300"],
+        ["450", "300"]
       ]
     },
     "transport": {
@@ -170,8 +681,8 @@
         "key": "location",
         "parent": "point",
         "value": [
-          "0",
-          "600"
+          "100",
+          "900"
         ]
       },
       "fill_strawberry": {
@@ -190,8 +701,8 @@
         "key": "location",
         "parent": "point",
         "value": [
-          "0",
-          "700"
+          "100",
+          "800"
         ]
       },
       "fill_choc": {
@@ -199,7 +710,7 @@
         "parent": "filling",
         "feat_choc_filling": {
           "key": "feature",
-          "parent": "chocolate_topping"
+          "parent": "strawberry_topping"
         }
       }
     },
@@ -210,8 +721,8 @@
         "key": "location",
         "parent": "point",
         "value": [
-          "0",
-          "800"
+          "100",
+          "850"
         ]
       },
       "fill_fluid": {
@@ -247,6 +758,144 @@
           "max-value": "1",
           "unit": "ccm_p_s"
         }
+      }
+    }
+  },
+  "filling_station_02": {
+    "key": "resource",
+    "parent": "filling_station",
+    "weight": {
+      "key": "quality",
+      "parent": "quality",
+      "value": "80",
+      "unit": "kg"
+    },
+    "pellet_dispenser_03": {
+      "key": "resource",
+      "parent": "pellet_dispenser",
+      "location": {
+        "key": "location",
+        "parent": "point",
+        "value": [
+          "100",
+          "500"
+        ]
+      },
+      "fill_strawberry": {
+        "key": "process",
+        "parent": "filling",
+        "feat_strawberry_filling": {
+          "key": "feature",
+          "parent": "chocolate_topping"
+        }
+      }
+    },
+    "pellet_dispenser_04": {
+      "key": "resource",
+      "parent": "pellet_dispenser",
+      "location": {
+        "key": "location",
+        "parent": "point",
+        "value": [
+          "100",
+          "400"
+        ]
+      },
+      "fill_choc": {
+        "key": "process",
+        "parent": "filling",
+        "feat_choc_filling": {
+          "key": "feature",
+          "parent": "chocolate_topping"
+        }
+      }
+    },
+    "fluid_dispenser_02": {
+      "key": "resource",
+      "parent": "fluid_dispenser",
+      "location": {
+        "key": "location",
+        "parent": "point",
+        "value": [
+          "100",
+          "450"
+        ]
+      },
+      "fill_fluid": {
+        "key": "process",
+        "parent": "filling",
+        "feat_yogurt_filling": {
+          "key": "feature",
+          "parent": "yogurt_filling"
+        },
+        "input": {
+          "key": "input",
+          "parent": "material_object",
+          "viscosity": {
+            "key": "quality",
+            "parent": "viscosity",
+            "max-value": "1",
+            "unit": "kg_p_m_p_s"
+          }
+        },
+        "output": {
+          "key": "output",
+          "parent": "material_object",
+          "viscosity": {
+            "key": "quality",
+            "parent": "viscosity",
+            "max-value": "1",
+            "unit": "kg_p_m_p_s"
+          }
+        },
+        "throughput": {
+          "key": "quality",
+          "parent": "throughput",
+          "max-value": "1",
+          "unit": "ccm_p_s"
+        }
+      }
+    }
+  },
+  "pellet_dispenser_05": {
+    "key": "resource",
+    "parent": "pellet_dispenser",
+    "location": {
+      "key": "location",
+      "parent": "point",
+      "value": [
+        "100",
+        "100"
+      ]
+    },
+    "fill_choc": {
+      "key": "process",
+      "parent": "filling",
+      "feat_choc_filling": {
+        "key": "feature",
+        "parent": "chocolate_topping"
+      }
+    }
+  },
+  "stack_01": {
+    "key": "resource",
+    "parent": "floor_bound_storage_resource",
+    "location": {
+      "key": "location",
+      "parent": "polygon",
+      "value": [
+        ["625","525"],
+        ["675","525"],
+        ["675","775"],
+        ["625","775"]
+      ]
+    },
+    "provide_glass": {
+      "key": "process",
+      "parent": "storing",
+      "feat_glass": {
+        "key": "feature",
+        "parent": "glass"
       }
     }
   }
