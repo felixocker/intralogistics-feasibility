@@ -705,10 +705,10 @@
           "800"
         ]
       },
-      "fill_choc": {
+      "fill_strawberry": {
         "key": "process",
         "parent": "filling",
-        "feat_choc_filling": {
+        "feat_strawberry_filling": {
           "key": "feature",
           "parent": "strawberry_topping"
         }
@@ -781,10 +781,10 @@
           "500"
         ]
       },
-      "fill_strawberry": {
+      "fill_choc": {
         "key": "process",
         "parent": "filling",
-        "feat_strawberry_filling": {
+        "feat_choc_filling": {
           "key": "feature",
           "parent": "chocolate_topping"
         }

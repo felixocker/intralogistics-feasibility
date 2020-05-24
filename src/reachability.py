@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 """inference engine for reachability analysis"""
 
-import os
 import sys
 from itertools import product
-from owlready2 import get_ontology, default_world
-import rdflib
+from owlready2 import get_ontology
 from shapely.geometry import Point, LineString
 from shapely.geometry.polygon import Polygon
 import executequery as xq
@@ -46,7 +44,7 @@ def line_trafo(elem, table, identifier):
             coordinates[1][0] = e[4 + identifier]
             coordinates[1][1] = e[5 + identifier]
     return LineString([[coordinates[0][0], coordinates[0][1]],
-                               [coordinates[1][0], coordinates[1][1]]])
+                       [coordinates[1][0], coordinates[1][1]]])
 
 def circle_trafo(elem, table, identifier):
     """create shapely circle object from coordinates"""
@@ -71,11 +69,12 @@ def polygon_trafo(elem, table, identifier):
             coordinates.append(point)
             break
     # add neighbors
-    coordinates = find_neighbors(table, identifier, elem[3 + identifier], 
+    coordinates = find_neighbors(table, identifier, elem[3 + identifier],
                                  elem[3 + identifier], elem[3 + identifier], coordinates)
     return Polygon(coordinates)
 
 def find_neighbors(table, identifier, current, prev, start, neighbors):
+    """create ordered list of polygon's points"""
     for elem in table:
         if elem[-1] == current and elem[3 + identifier] != start and\
            elem[3 + identifier] != prev:
@@ -162,13 +161,13 @@ def check_overlap(res_a, res_b):
         coord1 = i[0][2]
         coord2 = i[1][2]
         if i[0][0] != i[1][0]:
-            if type(coord1) == Point and type(coord2) == Point and\
+            if isinstance(coord1, Point) and isinstance(coord2, Point) and\
                list(coord1.coords) == list(coord2.coords) or\
-               type(coord1) == Point and not type(coord2) == Point and\
+               isinstance(coord1, Point) and not isinstance(coord2, Point) and\
                coord2.distance(coord1) < ACCEPTED_DEVIATION or\
-               not type(coord1) == Point and type(coord2) == Point and\
+               not isinstance(coord1, Point) and isinstance(coord2, Point) and\
                coord1.distance(coord2) < ACCEPTED_DEVIATION or\
-               not type(coord1) == Point and not type(coord2) == Point and\
+               not isinstance(coord1, Point) and not isinstance(coord2, Point) and\
                coord1.intersects(coord2):
                 connections.append([str(i[0][0]), str(i[1][0])])
     return connections

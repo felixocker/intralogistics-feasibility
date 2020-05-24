@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 """reachability inference for individual specs"""
 
-import os
-import sys
 from owlready2 import get_ontology, default_world
-import rdflib
 import executequery as xq
 
 ONTOFILE = "logistics-onto.owl"
@@ -26,8 +23,8 @@ def get_spec_instances(ontofile):
         spec_names.append(":" + str(elem[0]).split('.')[-1])
     return spec_names
 
-def run_complex_query(ontofile, part1, part2, part3, spec):
-    """create query for feasibility check of a spec"""
+def run_complex_query(ontofile, part1, part2, part3, specif):
+    """create query for feasibility check of a specification"""
     myfile = open(PREFIXES, "r")
     query = myfile.read()
     myfile.close()
@@ -36,7 +33,7 @@ def run_complex_query(ontofile, part1, part2, part3, spec):
         query += myfile.read()
         myfile.close()
         if not part == part3:
-            query += spec
+            query += specif
     return xq.executequery(ontofile, query)
 
 def run_query(ontofile, query_body):
@@ -73,14 +70,16 @@ def insert_relations(specific_relations):
 
 def specific_feedback(infeasible_features):
     """return feedback which features cannot be realized"""
+    msg1 = "- infeasible - no available resource can realize this feature"
+    msg2 = "- infeasible - no transport connection to resource that can realize"
     if not infeasible_features:
         print("no infeasible features")
     else:
         for i in infeasible_features:
             if not i[1]:
-                print(i[0], " - infeasible - no available resource can realize this feature")
+                print(i[0], msg1)
             else:
-                print(i[0], " - infeasible - no transport connection to resource that can realize ", i[1])
+                print(i[0], msg2, i[1])
 
 if __name__ == "__main__":
     for spec in get_spec_instances(ONTOFILE):
