@@ -1,6 +1,6 @@
 # intralogistics-feasibility
-ontology-based feasibility checker for intralogistics
-
+ontology-based feasibility checker for intralogistics\
+implementation for the paper "Towards Providing Feasibility Feedback in Intralogistics Using a Knowledge Graph" submitted to IEEE INDIN20
 
 # Contents
 ## src - knowledge graph creation and adaption
