@@ -11,10 +11,10 @@ implementation for the paper "Towards Providing Feasibility Feedback in Intralog
 * specific_reachability.py - product specific feasibility check, takes qualities into account
 
 ## data - input files for knowledge graph creation
-* resource-taxonomy.csv - taxonomy of typical logistics resources, according to w Jünemann 1989
+* resource-taxonomy.csv - taxonomy of typical logistics resources, according to Jünemann 1989
 * process-taxonomy.csv - incomplete collection of several typical production resources
-* feature-taxonomy.csv - collection of several classes of feature relevant for the minimal example
-* resources.json - input data for the minimal exampe's resources on abox level
+* feature-taxonomy.csv - collection of several classes of features relevant for the minimal example
+* resources.json - input data for the minimal example's resources on abox level
 * product.json - input data for the minimal example's specification 
 
 ## queries
