@@ -41,5 +41,5 @@ year = {2020}
 GPL v3.0
 
 # Contact
-Felix Ocker - [felix.ocker@tum.de](mailto:felix.ocker@tum.de)
+Felix Ocker - [felix.ocker@tum.de](mailto:felix.ocker@tum.de)\
 Technical University of Munich - Institute of Automation and Information Systems <https://www.mw.tum.de/en/ais/homepage/>
