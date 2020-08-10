@@ -1,6 +1,6 @@
 # intralogistics-feasibility
 ontology-based feasibility checker for intralogistics\
-implementation for the paper "Towards Providing Feasibility Feedback in Intralogistics Using a Knowledge Graph" submitted to IEEE INDIN20
+implementation for the paper "Towards Providing Feasibility Feedback in Intralogistics Using a Knowledge Graph" presented at IEEE INDIN20
 
 # Contents
 ## src - knowledge graph creation and adaption
@@ -24,7 +24,22 @@ implementation for the paper "Towards Providing Feasibility Feedback in Intralog
 * find_viable_transport_resources.sparql - returns transport resources that can transport the product in question
 * feature_feasibility.sparql - returns infeasible features
 
-# Copyright
-Copyright © 2019 Technical University of Munich - Institute of Automation and Information Systems. <https://www.mw.tum.de/en/ais/homepage/>
+# Citation
+Please use the following bibtex entry:
+```
+@inproceedings{ocker2020indin,
+author = {Ocker, Felix and Vogel-Heuser, Birgit and Fischer, Juliane},
+booktitle = {INDIN},
+pages = {380--387},
+publisher = {IEEE},
+title = {{Towards Providing Feasibility Feedback in Intralogistics Using a Knowledge Graph}},
+year = {2020}
+}
+```
 
-All rights reserved. Contact: [felix.ocker@tum.de](mailto:felix.ocker@tum.de)
+# License
+GPL v3.0
+
+# Contact
+Felix Ocker - [felix.ocker@tum.de](mailto:felix.ocker@tum.de)
+Technical University of Munich - Institute of Automation and Information Systems <https://www.mw.tum.de/en/ais/homepage/>
