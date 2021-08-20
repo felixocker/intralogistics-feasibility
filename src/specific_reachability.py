@@ -4,8 +4,6 @@
 from owlready2 import get_ontology, default_world
 import executequery as xq
 
-ONTOFILE = "logistics-onto.owl"
-IRI = "http://example.org/logistics-onto.owl"
 PREFIXES = "../queries/prefixes.sparql"
 QUERY = "../queries/find_viable_transport_resources.sparql"
 QUERY_FEATS = "../queries/feature_feasibility.sparql"
@@ -46,7 +44,7 @@ def run_query(ontofile, query_body):
     myfile.close()
     return xq.executequery(ontofile, query)
 
-def remove_relations(ontofile, query_body):
+def remove_relations(iri, ontofile, query_body):
     """remove existing specifically_connected_to relations"""
     myfile = open(PREFIXES, "r")
     query = myfile.read()
@@ -54,19 +52,19 @@ def remove_relations(ontofile, query_body):
     myfile = open(query_body, "r")
     query += myfile.read()
     myfile.close()
-    onto = get_ontology(IRI).load()
+    onto = get_ontology(iri).load()
     graph = default_world.as_rdflib_graph()
     graph.update(query)
     onto.save(file=ontofile)
 
-def insert_relations(specific_relations):
+def insert_relations(specific_relations, iri, ontofile):
     """insert connected_to relations into onto"""
-    onto = get_ontology(IRI).load()
+    onto = get_ontology(iri).load()
     with onto:
         for i in specific_relations:
             onto[str(i[0]).split('.')[-1]].specifically_connected_to.\
                                            append(onto[str(i[1]).split('.')[-1]])
-    onto.save(file=ONTOFILE)
+    onto.save(file=ontofile)
 
 def specific_feedback(infeasible_features):
     """return feedback which features cannot be realized"""
@@ -81,10 +79,16 @@ def specific_feedback(infeasible_features):
             else:
                 print(i[0], msg2, i[1])
 
-if __name__ == "__main__":
-    for spec in get_spec_instances(ONTOFILE):
+def check_feasibility(iri, ontofile):
+    """check intralogistics feasibility under consideration of product spec"""
+    for spec in get_spec_instances(ontofile):
         print("feasibility feedback for " + spec)
-        remove_relations(ONTOFILE, QUERY_DELETE)
-        insert_relations(run_query(ONTOFILE, QUERY))
-        specific_feedback(run_complex_query(ONTOFILE, QUERY_FEATS_1, QUERY_FEATS_2,\
+        remove_relations(iri, ontofile, QUERY_DELETE)
+        insert_relations(run_query(ontofile, QUERY), iri, ontofile)
+        specific_feedback(run_complex_query(ontofile, QUERY_FEATS_1, QUERY_FEATS_2,\
                                             QUERY_FEATS_3, spec))
+
+if __name__ == "__main__":
+    iri = "http://example.org/logistics-onto.owl"
+    ontofile = "logistics-onto.owl"
+    check_feasibility(iri, ontofile)

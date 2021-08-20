@@ -6,14 +6,6 @@ from owlready2 import DatatypeProperty, FunctionalProperty, get_ontology, Invers
 from onto_gen_modules import get_csv_data, get_json_data, dynamically_create_classes, \
      create_spec_from_json, create_resource_description_from_json
 
-IRI = "http://example.org/logistics-onto.owl"
-FILE = "logistics-onto.owl"
-CSV_PROCESS_TAXO = "../data/process-taxonomy.csv"
-CSV_RESOURCE_TAXO = "../data/resource-taxonomy.csv"
-CSV_FEATURE_TAXO = "../data/feature-taxonomy.csv"
-JSON_RESOURCE_INSTANCES = "../data/resource-instances.json"
-JSON_PRODUCT_SPEC = "../data/product.json"
-
 def build_tbox(iri, output):
     """build tbox and store into output"""
     onto = get_ontology(iri)
@@ -265,14 +257,21 @@ def build_tbox(iri, output):
 
     onto.save(file=output)
 
-def main():
+def create_onto(iri, ontofile, csv_proc_taxo, csv_res_taxo, csv_feat_taxo, json_prod_spec, json_res_ins):
     """create main classes and load taxonomies"""
-    build_tbox(IRI, FILE)
-    dynamically_create_classes(IRI, FILE, get_csv_data(CSV_PROCESS_TAXO))
-    dynamically_create_classes(IRI, FILE, get_csv_data(CSV_RESOURCE_TAXO))
-    dynamically_create_classes(IRI, FILE, get_csv_data(CSV_FEATURE_TAXO))
-    create_spec_from_json(IRI, FILE, get_json_data(JSON_PRODUCT_SPEC))
-    create_resource_description_from_json(IRI, FILE, get_json_data(JSON_RESOURCE_INSTANCES))
+    build_tbox(iri, ontofile)
+    dynamically_create_classes(iri, ontofile, get_csv_data(csv_proc_taxo))
+    dynamically_create_classes(iri, ontofile, get_csv_data(csv_res_taxo))
+    dynamically_create_classes(iri, ontofile, get_csv_data(csv_feat_taxo))
+    create_spec_from_json(iri, ontofile, get_json_data(json_prod_spec))
+    create_resource_description_from_json(iri, ontofile, get_json_data(json_res_ins))
 
 if __name__ == "__main__":
-    main()
+    iri = "http://example.org/logistics-onto.owl"
+    ontofile = "logistics-onto.owl"
+    csv_proc_taxo = "../data/process-taxonomy.csv"
+    csv_res_taxo = "../data/resource-taxonomy.csv"
+    csv_feat_taxo = "../data/feature-taxonomy.csv"
+    json_prod_spec = "../data/product.json"
+    json_res_ins = "../data/resource-instances.json"
+    create_onto(iri, ontofile, csv_proc_taxo, csv_res_taxo, csv_feat_taxo, json_prod_spec, json_res_ins)

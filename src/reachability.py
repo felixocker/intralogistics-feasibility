@@ -8,8 +8,6 @@ from shapely.geometry import Point, LineString
 from shapely.geometry.polygon import Polygon
 import executequery as xq
 
-ONTOFILE = "logistics-onto.owl"
-IRI = "http://example.org/logistics-onto.owl"
 PREFIXES = "../queries/prefixes.sparql"
 QUERY_LOG = "../queries/find_transport_resources.sparql"
 QUERY_NON_LOG = "../queries/find_non_transport_resources.sparql"
@@ -135,7 +133,7 @@ def process_query_results(ontofile, query_t, query_nt):
             non_transp_res.append(blank)
     return [transp_res, non_transp_res]
 
-def insert_relations(geometry_info):
+def insert_relations(geometry_info, iri, ontofile):
     """insert connected_to relations into onto"""
     transp_res = geometry_info[0]
     non_transp_res = geometry_info[1]
@@ -147,11 +145,11 @@ def insert_relations(geometry_info):
     connections.extend(check_overlap(non_transp_res, sources))
     # remove duplicates
     connections = list(set(map(lambda i: tuple(i), connections)))
-    onto = get_ontology(IRI).load()
+    onto = get_ontology(iri).load()
     with onto:
         for i in connections:
             onto[i[0].split('.')[-1]].connected_to.append(onto[i[1].split('.')[-1]])
-    onto.save(file=ONTOFILE)
+    onto.save(file=ontofile)
 
 def check_overlap(res_a, res_b):
     """check if two areas/ lines/ points overlap"""
@@ -172,5 +170,12 @@ def check_overlap(res_a, res_b):
                 connections.append([str(i[0][0]), str(i[1][0])])
     return connections
 
+def infer_reachability(iri, ontofile):
+    """infer reachability and save new facts to original onto"""
+    query_results = process_query_results(ontofile, QUERY_LOG, QUERY_NON_LOG)
+    insert_relations(query_results, iri, ontofile)
+
 if __name__ == "__main__":
-    insert_relations(process_query_results(ONTOFILE, QUERY_LOG, QUERY_NON_LOG))
+    iri = "http://example.org/logistics-onto.owl"
+    ontofile = "logistics-onto.owl"
+    infer_reachability(iri, ontofile)

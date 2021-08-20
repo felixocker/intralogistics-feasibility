@@ -4,6 +4,7 @@ implementation for the paper "Towards Providing Feasibility Feedback in Intralog
 
 # Contents
 ## src - knowledge graph creation and adaption
+* main.py - convenience module for running the following scripts
 * logistics_onto.py - tbox and dynamic abox creation
 * onto_gen_modules.py - modules for dynamic ontology population
 * executequery.py - module for executing SPARQL query, returns nested list of results
